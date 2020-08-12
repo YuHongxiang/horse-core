@@ -1,6 +1,10 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.UserDTO;
+import com.example.demo.mapper.UserMapper;
 import java.util.Arrays;
+import java.util.List;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanClassLoaderAware;
 import org.springframework.beans.factory.BeanFactory;
@@ -17,16 +21,37 @@ import org.springframework.core.env.Environment;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.type.AnnotationMetadata;
+import org.springframework.stereotype.Service;
 
-//@Service("testService")
+@Service("testService")
 //@Scope("prototype")
+@AllArgsConstructor
 public class TestServiceImpl implements ITestService, ApplicationContextAware,
         ApplicationEventPublisherAware, BeanClassLoaderAware, BeanFactoryAware,
         BeanNameAware, EnvironmentAware, ImportAware, ResourceLoaderAware {
+
+    private final UserMapper userMapper;
+
     @Override
     public String getCustName() {
         String custName = "libai";
         return custName;
+    }
+
+    @Override
+    public String findUserNameById(Long userId) {
+        String name = "cxk";
+        return userMapper.findUserNameById(userId);
+    }
+
+    @Override
+    public UserDTO findUserById(Long userId) {
+        return userMapper.findUserById(userId);
+    }
+
+    @Override
+    public List<UserDTO> qryUserList() {
+        return userMapper.findAllUser();
     }
 
     //通过<bean>的destroy-method属性指定的销毁方法
