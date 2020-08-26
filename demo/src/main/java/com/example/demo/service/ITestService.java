@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.UserDTO;
+import com.example.demo.bean.User;
+import com.example.demo.bean.UserDTO;
 import java.util.List;
 
 public interface ITestService {
@@ -8,7 +9,7 @@ public interface ITestService {
 
     String findUserNameById(Long userId);
 
-    UserDTO findUserById(Long userId);
+    User findUserById(Long userId);
 
     List<UserDTO> qryUserList();
 }

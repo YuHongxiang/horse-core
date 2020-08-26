@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.UserDTO;
+import com.example.demo.bean.User;
+import com.example.demo.bean.UserDTO;
 import com.example.demo.mapper.UserMapper;
 import java.util.Arrays;
 import java.util.List;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.BeanClassLoaderAware;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ApplicationEventPublisher;
@@ -30,6 +32,8 @@ public class TestServiceImpl implements ITestService, ApplicationContextAware,
         ApplicationEventPublisherAware, BeanClassLoaderAware, BeanFactoryAware,
         BeanNameAware, EnvironmentAware, ImportAware, ResourceLoaderAware {
 
+  //    private final UserTestMapper userTestMapper;
+
     private final UserMapper userMapper;
 
     @Override
@@ -41,17 +45,18 @@ public class TestServiceImpl implements ITestService, ApplicationContextAware,
     @Override
     public String findUserNameById(Long userId) {
         String name = "cxk";
-        return userMapper.findUserNameById(userId);
+        return null;
     }
 
     @Override
-    public UserDTO findUserById(Long userId) {
-        return userMapper.findUserById(userId);
+    public User findUserById(Long userId) {
+        User user = userMapper.getUserById(userId);
+        return user;
     }
 
     @Override
     public List<UserDTO> qryUserList() {
-        return userMapper.findAllUser();
+        return null;
     }
 
     //通过<bean>的destroy-method属性指定的销毁方法

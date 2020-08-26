@@ -1,21 +1,34 @@
 package com.example.demo.mapper;
 
-import com.example.demo.dto.UserDTO;
+import com.example.demo.bean.Role;
+import com.example.demo.bean.User;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
+/**
+ * Created by sang on 2017/12/17.
+ */
 @Mapper
 public interface UserMapper {
 
-    @Select("select user_name from demo_user where user_id = #{userId} ")
-    String findUserNameById(@Param("userId") Long userId);
+    User loadUserByUsername(@Param("username") String username);
 
-    @Select("select * from demo_user where user_id = #{userId} ")
-    UserDTO findUserById(@Param("userId") Long userId);
+    long reg(User user);
 
-    @Select("select * from demo_user")
-    List<UserDTO> findAllUser();
+    int updateUserEmail(@Param("email") String email, @Param("id") Long id);
 
+    List<User> getUserByNickname(@Param("nickname") String nickname);
+
+    List<Role> getAllRole();
+
+    int updateUserEnabled(@Param("enabled") Boolean enabled, @Param("uid") Long uid);
+
+    int deleteUserById(Long uid);
+
+    int deleteUserRolesByUid(Long id);
+
+    int setUserRoles(@Param("rids") Long[] rids, @Param("id") Long id);
+
+    User getUserById(@Param("id") Long id);
 }
