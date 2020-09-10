@@ -1,0 +1,7 @@
+       .__    .__
+_______|  |__ |__| ____
+\_  __ \  |  \|  |/    \
+ |  | \/   Y  \  |   |  \
+ |__|  |___|  /__|___|  /
+            \/        \/       [demo]
+${AnsiColor.GREEN} :: Spring Boot ::${AnsiStyle.NORMAL}        ${spring-boot.formatted-version}${AnsiStyle.NORMAL}
